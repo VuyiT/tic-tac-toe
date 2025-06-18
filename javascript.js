@@ -27,5 +27,13 @@ function Gameboard() {
         return false;
     };
 
-    return {getBoard, markCell};
+    const resetBoard = () => {
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < columns; c++) {
+                board[r][c] = '';
+            }
+        }
+    };
+
+    return {getBoard, markCell, resetBoard};
 }
