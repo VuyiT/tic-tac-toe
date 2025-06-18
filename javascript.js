@@ -109,4 +109,11 @@ const Game = (() => {
     const checkTie = () => {
         return gameboard.getBoard().flat().every(cell => cell !== '');
     };
+
+    const playTurn = (cellIndex) => {
+        if (isGameOver) {
+            console.log("Game is over. Start a new game to play again.");
+            return;
+        }
+    };
 })
