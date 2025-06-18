@@ -9,5 +9,14 @@ function Gameboard() {
 
     const getBoard = () => board.map(rows => [...rows]);
 
+    const getCoordinates = (index) => {
+        if (index < 1 || index > (rows * columns)) {
+            return [-1, -1];
+        }
+        const row = Math.floor((index - 1) / columns);
+        const col = (index - 1) % columns;
+        return [row, col];
+    };
+
     return {getBoard};
 }
