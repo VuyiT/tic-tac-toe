@@ -105,4 +105,8 @@ const Game = (() => {
 
         return false;
     };
+
+    const checkTie = () => {
+        return gameboard.getBoard().flat().every(cell => cell !== '');
+    };
 })
