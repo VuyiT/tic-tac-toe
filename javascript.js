@@ -115,5 +115,41 @@ const Game = (() => {
             console.log("Game is over. Start a new game to play again.");
             return;
         }
+
+        const currentMarker = players[currentPlayerIndex].getMarker();
+    const success = gameboard.markCell(cellIndex, currentMarker); 
+
+        if (success) {
+            gameboard.printBoard();
+
+            if (checkWin()) {
+                console.log(`${players[currentPlayerIndex].getName()} wins!`);
+                isGameOver = true;
+            } else if (checkTie()) {
+                console.log("It's a tie!");
+                isGameOver = true;
+            } else {
+                switchPlayer();
+                console.log(`${players[currentPlayerIndex].getName()}'s turn. Enter a number (1-9) to place your marker.`);
+            }
+        } else {
+            console.log("Invalid move. That cell is already taken or your input is out of range. Try again.");
+            gameboard.printBoard(); 
+        }
     };
-})
+
+    const resetGame = () => {
+        gameboard.resetBoard();
+        isGameOver = false;
+        currentPlayerIndex = 0;
+        console.log("Game has been reset.");
+        gameboard.printBoard();
+        console.log(`${players[currentPlayerIndex].getName()}'s turn. Enter a number (1-9) to place your marker.`);
+    };
+
+    return {
+        start,
+        playTurn,
+        resetGame
+    };
+})();
