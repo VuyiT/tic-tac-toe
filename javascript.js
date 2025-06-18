@@ -45,3 +45,10 @@ function Gameboard() {
 
     return {getBoard, markCell, resetBoard, printBoard};
 }
+
+function Player(name, marker) {
+    const getName = () => name;
+    const getMarker = () => marker;
+
+    return {getName, getMarker};
+}
