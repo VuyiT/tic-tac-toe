@@ -73,4 +73,9 @@ const Game = (() => {
         gameboard.printBoard();
         console.log(`${players[currentPlayerIndex].getName()}'s turn. Enter a number (1-9) to place your marker.`);
     };
+
+    const switchPlayer = () => {
+        currentPlayerIndex = 1 - currentPlayerIndex;
+    };
+    
 })
