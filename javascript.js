@@ -18,5 +18,14 @@ function Gameboard() {
         return [row, col];
     };
 
-    return {getBoard};
+    const markCell = (index, marker) => {
+        const [row, col] = getCoordinates(index);
+        if (row !== -1 && board[row][col] === "") {
+            board[row][col] = marker;
+            return true;
+        }
+        return false;
+    };
+
+    return {getBoard, markCell};
 }
