@@ -77,5 +77,32 @@ const Game = (() => {
     const switchPlayer = () => {
         currentPlayerIndex = 1 - currentPlayerIndex;
     };
-    
+
+    const checkWin = () => {
+        const currentBoard = gameboard.getBoard();
+        const marker = players[currentPlayerIndex].getMarker();
+        const rows = 3; 
+        const columns = 3;
+
+        for (let r = 0; r < rows; r++) {
+            if (currentBoard[r][0] === marker && currentBoard[r][1] === marker && currentBoard[r][2] === marker) {
+                return true;
+            }
+        }
+
+        for (let c = 0; c < columns; c++) {
+            if (currentBoard[0][c] === marker && currentBoard[1][c] === marker && currentBoard[2][c] === marker) {
+                return true;
+            }
+        }
+
+        if (currentBoard[0][0] === marker && currentBoard[1][1] === marker && currentBoard[2][2] === marker) {
+            return true;
+        }
+        if (currentBoard[0][2] === marker && currentBoard[1][1] === marker && currentBoard[2][0] === marker) {
+            return true;
+        }
+
+        return false;
+    };
 })
