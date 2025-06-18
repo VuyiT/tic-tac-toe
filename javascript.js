@@ -52,3 +52,25 @@ function Player(name, marker) {
 
     return {getName, getMarker};
 }
+
+const Game = (() => {
+    let players = [];
+    let currentPlayerIndex;
+    let gameboard;
+    let isGameOver;
+
+    const start = (playerOneName = "Player X", playerTwoName = "Player O") => {
+        players = [
+            Player(playerOneName, "X"),
+            Player(playerTwoName, "O"),
+        ];
+        
+        currentPlayerIndex = 0;
+        gameboard = Gameboard();
+        isGameOver = false;
+        console.log("Welcome to Tic-Tac-Toe!");
+        console.log(`${players[0].getName()} is '${players[0].getMarker()}' and ${players[1].getName()} is '${players[1].getMarker()}'`);
+        gameboard.printBoard();
+        console.log(`${players[currentPlayerIndex].getName()}'s turn. Enter a number (1-9) to place your marker.`);
+    };
+})
